@@ -1,0 +1,41 @@
+a)
+104kg
+364kg
+450kg
+1000kg
+1800kg
+4900kg
+29000kg
+110000kg
+I managed to list all the weights in increasing order by first running cat *.dat, which concatenated all the files in the Q1 folder of file type .dat. This lists the text in all of the data files. Then, i ran cut -f1 -d" " to get the first field, which was the weight. All the weights were listed. Lastly, i ran sort -n which sorted the weights by numerical value, and by default in increasing order. I strung these commands together using pipes. (After all the commands, I added >> q1_written_answers.txt to add the list to this file)
+
+b)
+24m
+13.5m
+6m
+5.15m
+4.5m
+4m
+2.1m
+2.0m
+I used cat *.dat which concatenated all the files in the Q1 folder of file type dat as in the previous question. I then used cut -f2 -d" " to get the second field after the delimiter "space" which was the lengths. Lastly, i ran sort -n -r which sorts by numerical value (-n) but in reverse order (-r) (so decreasing order as opposed to the default increasing order)
+
+c)
+elephant is heavier
+I stored the weight of the elephant in a variable elephant_weight=`cat elephant.dat | cut -f1 -d"k"` and then i stored the weight of the hippo in a separate variable. Then i created a series of if statements to let me know which is heavier or if they were the same weight. 
+if (( elephant_weight>hippo_weight ))
+then 
+	echo "elephant is heavier"
+elif (( hippo_weight>elephant_weight ))
+then
+	echo "hippo is heavier"
+else 
+	echo "same weight"
+fi
+
+d) 
+452kg 
+First i stored the crocodile weight in a variable; weight=`cat crocodile.dat | cut -f1 -d"k"`. Then I created a new variable with the added weight; new_weight=$(($weight + 2)). Then i used cat crocodile.dat | tr `echo $weight` `echo $new_weight` > crocodile.dat to swap the old weight with the new one and rewrite the file with the new weight.
+
+e)
+To remove giraffe from the zoo, i ran rm `ls | grep giraffe`. I found the files named giraffe using grep and then used the rm command. 
